@@ -1,4 +1,6 @@
 ﻿param(
+    [switch]$Interactive,
+
     [Parameter(Position = 0)]
     [ValidateSet("install", "uninstall")]
     [string]$Action = "install",
@@ -9,13 +11,44 @@
 )
 
 $ErrorActionPreference = "Stop"
-$LanguageCode = $Language
+[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
 $Utf8NoBom = [System.Text.UTF8Encoding]::new($false)
 $LanguageListPattern = '\["en-US","de-DE","fr-FR","ko-KR","ja-JP","es-419","es-ES","it-IT","hi-IN","pt-BR","id-ID"\]'
 $LanguageListReplacement = '["en-US","de-DE","fr-FR","ko-KR","ja-JP","es-419","es-ES","it-IT","hi-IN","pt-BR","id-ID","zh-CN","zh-TW","zh-HK"]'
 $AsarPatchTarget = ".vite/build/index.js"
 $AsarIntegrityBlockSize = 4 * 1024 * 1024
 $script:CurrentBackupSetPath = $null
+
+function Read-InteractiveSelection {
+    Write-Host "=== Claude Desktop Windows 中文补丁 ==="
+    Write-Host ""
+    Write-Host "[1] 安装简体中文"
+    Write-Host "[2] 安装繁体中文（台湾）"
+    Write-Host "[3] 安装繁体中文（香港）"
+    Write-Host "[4] 恢复原样 / 卸载补丁"
+    Write-Host "[Q] 退出"
+    Write-Host ""
+
+    while ($true) {
+        $selection = (Read-Host "请选择操作 [1/2/3/4/Q]").Trim()
+        switch -Regex ($selection) {
+            '^[1]$' { return @{ Action = "install"; Language = "zh-CN" } }
+            '^[2]$' { return @{ Action = "install"; Language = "zh-TW" } }
+            '^[3]$' { return @{ Action = "install"; Language = "zh-HK" } }
+            '^[4]$' { return @{ Action = "uninstall"; Language = "zh-CN" } }
+            '^[Qq]$' { exit 0 }
+            default { Write-Host "请输入 1、2、3、4 或 Q。" -ForegroundColor Yellow }
+        }
+    }
+}
+
+if ($Interactive) {
+    $interactiveSelection = Read-InteractiveSelection
+    $Action = $interactiveSelection.Action
+    $Language = $interactiveSelection.Language
+}
+
+$LanguageCode = $Language
 
 function Get-LanguageLabel {
     param([string]$Code)
