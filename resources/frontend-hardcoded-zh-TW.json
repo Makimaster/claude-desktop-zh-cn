@@ -192,6 +192,10 @@
     "DJt={recents:\"最近使用\",shared:\"已共享\"}"
   ],
   [
+    "RJt={recents:\"最近使用\",shared:\"Shared\"}",
+    "RJt={recents:\"最近使用\",shared:\"已共享\"}"
+  ],
+  [
     "Doesn't look like an Anthropic model — ",
     "看起來不像 Anthropic 模型 — "
   ],
@@ -202,6 +206,10 @@
   [
     "FJt={all:\"No tasks yet.\",active:\"No active tasks.\",archived:\"No archived tasks.\"}",
     "FJt={all:\"尚無任務。\",active:\"尚無活躍任務。\",archived:\"尚無已歸檔任務。\"}"
+  ],
+  [
+    "PJt={all:\"No tasks yet.\",active:\"No active tasks.\",archived:\"No archived tasks.\"}",
+    "PJt={all:\"尚無任務。\",active:\"尚無活躍任務。\",archived:\"尚無已歸檔任務。\"}"
   ],
   [
     "LJt=\"Untitled\"",
@@ -408,6 +416,10 @@
     "label:\"排序依據\""
   ],
   [
+    "\"aria-label\":\"Sort by\"",
+    "\"aria-label\":\"排序依據\""
+  ],
+  [
     "label:\"Status\"",
     "label:\"狀態\""
   ],
@@ -612,6 +624,14 @@
     "label:\"排程任務\""
   ],
   [
+    "const ya=\"Scheduled\"",
+    "const ya=\"排程任務\""
+  ],
+  [
+    "defaultMessage:\"Scheduled\",id:\"cXAlMRerxW\"",
+    "defaultMessage:\"排程任務\",id:\"cXAlMRerxW\""
+  ],
+  [
     "label:\"Customize\"",
     "label:\"自訂\""
   ],
@@ -682,6 +702,10 @@
   [
     "B1t={all:\"All\",active:\"Active\",archived:\"Archived\"}",
     "B1t={all:\"全部\",active:\"活躍\",archived:\"已封存\"}"
+  ],
+  [
+    "DJt={all:\"All\",active:\"Active\",archived:\"Archived\"}",
+    "DJt={all:\"全部\",active:\"活躍\",archived:\"已歸檔\"}"
   ],
   [
     "$1t={all:\"No tasks yet.\",active:\"No active tasks.\",archived:\"No archived tasks.\"}",
