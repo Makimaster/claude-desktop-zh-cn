@@ -28,6 +28,7 @@ import subprocess
 import struct
 import sys
 import tempfile
+import time
 from pathlib import Path
 from typing import Any
 
@@ -50,6 +51,14 @@ ONLINE_LOCALE_PRELOAD_TARGETS = [
 ONLINE_LOCALE_MARKER = "__claudeZhOnlineLocale"
 ONLINE_LOCALE_MAIN_MARKER = "__claudeZhOnlineLocaleMain"
 ONLINE_TRANSLATION_MAX_SOURCE_LEN = 240
+
+
+def log(message: str) -> None:
+    print(message, flush=True)
+
+
+def elapsed_since(start: float) -> str:
+    return f"{time.perf_counter() - start:.1f}s"
 
 LANG_LIST_RE = re.compile(
     r'\["en-US","de-DE","fr-FR","ko-KR","ja-JP","es-419","es-ES","it-IT","hi-IN","pt-BR","id-ID"(?:(?:,"zh-CN")|(?:,"zh-TW")|(?:,"zh-HK"))*\]'
@@ -133,8 +142,10 @@ def quit_claude() -> None:
 def copy_app(src: Path, dst: Path) -> None:
     if dst.exists():
         shutil.rmtree(dst)
-    print(f"Copying app to temporary workspace: {dst}")
+    start = time.perf_counter()
+    log(f"Copying app to temporary workspace: {dst}")
     run(["ditto", str(src), str(dst)])
+    log(f"Copied app to temporary workspace in {elapsed_since(start)}")
 
 
 def patch_language_whitelist(app: Path, lang_code: str) -> Path:
@@ -222,16 +233,22 @@ def replace_frontend_hardcoded_text(text: str, source: str, target: str) -> tupl
 
 
 def patch_hardcoded_frontend_strings(app: Path, lang_code: str) -> None:
+    start = time.perf_counter()
     assets_dir = app / FRONTEND_ASSETS_REL
     replacement_items = sorted(
         load_frontend_hardcoded_replacements(lang_code),
         key=lambda item: len(item[0]),
         reverse=True,
     )
+    js_files = sorted(assets_dir.glob("*.js"))
     patched_files = 0
     patched_strings = 0
 
-    for path in sorted(assets_dir.glob("*.js")):
+    log(
+        "Scanning frontend JS for hardcoded strings: "
+        f"{len(js_files)} files, {len(replacement_items)} replacement rules"
+    )
+    for index, path in enumerate(js_files, start=1):
         text = path.read_text(encoding="utf-8")
         patched = text
         count = 0
@@ -243,8 +260,17 @@ def patch_hardcoded_frontend_strings(app: Path, lang_code: str) -> None:
             path.write_text(patched, encoding="utf-8")
             patched_files += 1
             patched_strings += count
+        if index % 50 == 0 or index == len(js_files):
+            log(
+                "  scanned "
+                f"{index}/{len(js_files)} JS files, "
+                f"{patched_strings} replacements so far ({elapsed_since(start)})"
+            )
 
-    print(f"Patched hardcoded frontend strings: {patched_strings} replacements in {patched_files} files")
+    log(
+        "Patched hardcoded frontend strings: "
+        f"{patched_strings} replacements in {patched_files} files ({elapsed_since(start)})"
+    )
 
 
 def align4(value: int) -> int:
@@ -491,6 +517,7 @@ def build_online_dom_translation_script(lang_code: str, mapping: dict[str, str])
         '[/^Evening, (.+)$/,"晚上好，$1"],[/^Good evening, (.+)$/,"晚上好，$1"],'
         '[/^It\\\'s late-night (.+)$/,"夜深了，$1"],[/^Good night, (.+)$/,"晚安，$1"],'
         '[/^Delete (\\d+) chat$/,"删除 $1 个聊天"],[/^Delete (\\d+) chats$/,"删除 $1 个聊天"],'
+        '[/^Move (\\d+) chat to a project$/,"将 $1 个聊天移至项目"],[/^Move (\\d+) chats to a project$/,"将 $1 个聊天移至项目"],'
         '[/^Connection needs (\\d+) field$/,"连接还需要填写 $1 个字段"],[/^Connection needs (\\d+) fields$/,"连接还需要填写 $1 个字段"],'
         '[/^needs (\\d+) field$/,"还需要填写 $1 个字段"],[/^needs (\\d+) fields$/,"还需要填写 $1 个字段"],'
         '[/^Are you sure you want to delete (\\d+) chat\\? This cannot be undone\\.$/,"你确定要删除 $1 个聊天吗？此操作无法撤消。"],'
@@ -1120,7 +1147,8 @@ def is_signable_file(path: Path) -> bool:
 
 
 def resign_app(app: Path) -> None:
-    print("Re-signing patched app with local ad-hoc signature, preserving entitlements")
+    start = time.perf_counter()
+    log("Re-signing patched app with local ad-hoc signature, preserving entitlements")
     contents = app / "Contents"
     entitlements_dir = Path(tempfile.mkdtemp(prefix="claude-zh-cn-entitlements."))
     bundle_targets: list[Path] = []
@@ -1138,11 +1166,19 @@ def resign_app(app: Path) -> None:
                 file_targets.append(path)
 
     # Sign nested Mach-O files first, then their containing bundles, then the outer app.
-    for path in sorted(file_targets, key=lambda p: len(p.parts), reverse=True):
+    log(f"  signing {len(file_targets)} executable files and {len(bundle_targets) + 1} bundles")
+    sorted_file_targets = sorted(file_targets, key=lambda p: len(p.parts), reverse=True)
+    for index, path in enumerate(sorted_file_targets, start=1):
         sign_path(path, entitlements_dir)
-    for path in sorted(bundle_targets, key=lambda p: len(p.parts), reverse=True):
+        if index % 25 == 0 or index == len(sorted_file_targets):
+            log(f"  signed {index}/{len(sorted_file_targets)} executable files ({elapsed_since(start)})")
+    sorted_bundle_targets = sorted(bundle_targets, key=lambda p: len(p.parts), reverse=True)
+    for index, path in enumerate(sorted_bundle_targets, start=1):
         sign_path(path, entitlements_dir)
+        if index % 10 == 0 or index == len(sorted_bundle_targets):
+            log(f"  signed {index}/{len(sorted_bundle_targets)} nested bundles ({elapsed_since(start)})")
     sign_path(app, entitlements_dir)
+    log(f"Re-signed patched app in {elapsed_since(start)}")
 
 
 def clear_quarantine(app: Path) -> None:
@@ -1195,6 +1231,7 @@ def confirm_install_without_third_party_api_config(user_home: Path) -> bool:
 
 
 def backup_and_replace(original: Path, patched: Path, dry_run: bool) -> Path:
+    start = time.perf_counter()
     stamp = dt.datetime.now().strftime("%Y%m%d-%H%M%S")
     backup = original.with_name(f"Claude.backup-before-zh-CN-{stamp}.app")
     if dry_run:
@@ -1202,10 +1239,11 @@ def backup_and_replace(original: Path, patched: Path, dry_run: bool) -> Path:
         print(f"[dry-run] Would move {patched} -> {original}")
         return backup
 
-    print(f"Backing up current app: {backup}")
+    log(f"Backing up current app: {backup}")
     shutil.move(str(original), str(backup))
-    print(f"Installing patched app: {original}")
+    log(f"Installing patched app: {original}")
     shutil.move(str(patched), str(original))
+    log(f"Replaced app in {elapsed_since(start)}")
     return backup
 
 
@@ -1260,6 +1298,7 @@ def restore_oldest_backup(app: Path, dry_run: bool) -> Path:
 
 
 def verify(app: Path, lang_code: str) -> None:
+    start = time.perf_counter()
     frontend = app / FRONTEND_I18N_REL / f"{lang_code}.json"
     data = load_json(frontend)
     values = [v for v in data.values() if isinstance(v, str)]
@@ -1283,6 +1322,7 @@ def verify(app: Path, lang_code: str) -> None:
     for line in result.splitlines():
         if line.startswith("TeamIdentifier="):
             print(line)
+    log(f"Verification finished in {elapsed_since(start)}")
 
 
 def main() -> int:

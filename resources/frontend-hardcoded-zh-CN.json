@@ -784,12 +784,28 @@
     "confirmText:o=\"Confirm\",cancelText:a=\"取消\""
   ],
   [
+    "Archive selected",
+    "归档所选"
+  ],
+  [
+    "Custom groups",
+    "自定义分组"
+  ],
+  [
     "title:F?\"Archive selected\"",
     "title:F?\"归档所选\""
   ],
   [
+    "title:z?\"Archive selected\"",
+    "title:z?\"归档所选\""
+  ],
+  [
     "message:F?`Archive ${j.items.length} ${1===j.items.length?b.noun:b.nouns}? You can find ${1===j.items.length?\"it\":\"them\"} in the Archived tab.`",
     "message:F?`归档 ${j.items.length} 个${1===j.items.length?b.noun:b.nouns}？你可以在“已归档”标签页中找到${1===j.items.length?\"它\":\"它们\"}。`"
+  ],
+  [
+    "message:z?`Archive ${_.items.length} ${1===_.items.length?b.noun:b.nouns}? You can find ${1===_.items.length?\"it\":\"them\"} in the Archived tab.`",
+    "message:z?`归档 ${_.items.length} 个${1===_.items.length?b.noun:b.nouns}？你可以在“已归档”标签页中找到${1===_.items.length?\"它\":\"它们\"}。`"
   ],
   [
     "message:F?`归档 ${j.items.length} ${1===j.items.length?b.noun:b.nouns}？你可以在“已归档”标签页中找到${1===j.items.length?\"它\":\"它们\"}。`",
@@ -798,6 +814,10 @@
   [
     "confirmText:F?\"Archive\":\"Delete\"",
     "confirmText:F?\"归档\":\"Delete\""
+  ],
+  [
+    "confirmText:z?\"Archive\":\"Delete\"",
+    "confirmText:z?\"归档\":\"Delete\""
   ],
   [
     "s>0&&C(`${s} ${1===s?b.noun:b.nouns} ${F?\"archived\":\"deleted\"}`)",
@@ -1098,6 +1118,14 @@
   [
     "title:\"Projects\"",
     "title:\"项目\""
+  ],
+  [
+    "Filter chats",
+    "筛选聊天"
+  ],
+  [
+    "title:\"Chats\",noun:\"chat\",nouns:\"chats\",searchPlaceholder:\"Filter chats\",noResults:\"No chats match your search.\",emptyByTab:{recents:\"No chats yet.\",shared:\"You haven't shared any chats yet.\"}",
+    "title:\"聊天\",noun:\"聊天\",nouns:\"聊天\",searchPlaceholder:\"筛选聊天\",noResults:\"没有匹配的聊天。\",emptyByTab:{recents:\"还没有聊天。\",shared:\"你还没有共享任何聊天。\"}"
   ],
   [
     "title:\"Tasks\",noun:\"task\",nouns:\"tasks\",searchPlaceholder:\"Filter tasks\",noResults:\"No tasks match your search.\",emptyByTab:{recents:\"No tasks yet.\",shared:\"You haven't shared any tasks yet.\"}",
