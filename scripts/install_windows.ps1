@@ -1876,7 +1876,9 @@ function Install-WindowsLanguagePack {
 
     try {
         Write-Step "[1/9] 检查安装模式"
-        if ($PatchMode -eq "official") {
+        if ($PatchMode -eq "safe") {
+            Write-Host "  Cowork 兼容模式：跳过第三方 API 配置检查。" -ForegroundColor Green
+        } elseif ($PatchMode -eq "official") {
             Write-Host "  官方账号登录模式：跳过第三方 API 配置检查。" -ForegroundColor Green
         } elseif (-not (Confirm-InstallWithoutThirdPartyApiConfig)) {
             return
