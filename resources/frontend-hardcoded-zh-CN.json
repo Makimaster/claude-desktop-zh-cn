@@ -1378,5 +1378,125 @@
   [
     "defaultMessage:\"Relaunch now\"",
     "defaultMessage:\"立即重新启动\""
+  ],
+  [
+    "Claude will keep these in mind across chats and Cowork within Anthropic's guidelines.",
+    "Claude 会在聊天和 Cowork 中记住这些内容，并遵循 Anthropic 的指南。"
+  ],
+  [
+    "Claude will keep these in mind across chats and Cowork within",
+    "Claude 会在聊天和 Cowork 中记住这些内容，并遵循"
+  ],
+  [
+    "Anthropic's guidelines",
+    "Anthropic 的指南"
+  ],
+  [
+    "e.g. when learning new concepts, I find analogies particularly helpful",
+    "例如学习新概念时，我觉得类比特别有帮助"
+  ],
+  [
+    "Learn how your information is protected when using Anthropic products, and visit our",
+    "了解你在使用 Anthropic 产品时信息如何受到保护，并访问我们的"
+  ],
+  [
+    "for more details.",
+    "了解更多详情。"
+  ],
+  [
+    "Allow Claude to access common package managers to install packages and libraries for data analysis, visualizations, and file processing.",
+    "允许 Claude 访问常用包管理器，以安装用于数据分析、可视化和文件处理的软件包和库。"
+  ],
+  [
+    "View package manager domains.",
+    "查看包管理器域名。"
+  ],
+  [
+    "View package manager domains",
+    "查看包管理器域名"
+  ],
+  [
+    "Monitor chats closely as this comes with",
+    "请密切关注聊天，因为这会带来"
+  ],
+  [
+    ". Monitor chats closely as this comes with",
+    "。请密切关注聊天，因为这会带来"
+  ],
+  [
+    "security risks",
+    "安全风险"
+  ],
+  [
+    "Skills have moved to",
+    "技能已移至"
+  ],
+  [
+    "Back at it, claude",
+    "继续开始吧，claude"
+  ],
+  [
+    "Permanently delete Anthropic's server-side copies of your Claude Code sessions. Sessions stored locally on your computer aren't affected. Claude Code on the web sessions are managed separately — go to",
+    "永久删除 Anthropic 服务器端保存的 Claude Code 会话副本。本机存储的会话不受影响。网页版 Claude Code 会话需要单独管理，请前往"
+  ],
+  [
+    "Permanently delete Anthropic’s server-side copies of your Claude Code sessions. Sessions stored locally on your computer aren’t affected. Claude Code on the web sessions are managed separately — go to",
+    "永久删除 Anthropic 服务器端保存的 Claude Code 会话副本。本机存储的会话不受影响。网页版 Claude Code 会话需要单独管理，请前往"
+  ],
+  [
+    "Allow Claude to use coarse location metadata (city/region) to improve product experiences.",
+    "允许 Claude 使用粗略位置元数据（城市/地区）来改进产品体验。"
+  ],
+  [
+    "Allow the use of your chats and coding sessions to train and improve Anthropic AI models.",
+    "允许使用你的聊天和编码会话来训练和改进 Anthropic AI 模型。"
+  ],
+  [
+    "Allow Claude to remember relevant context from your chats. This setting controls memory for both chats and projects.",
+    "允许 Claude 记住你聊天中的相关上下文。此设置会同时控制聊天和项目的记忆。"
+  ],
+  [
+    "Import memory from other AI providers",
+    "从其他 AI 提供商导入记忆"
+  ],
+  [
+    "Bring relevant context and data from another AI provider to Claude. We'll provide a prompt you can use to fetch the memory from your other account.",
+    "将其他 AI 提供商中的相关上下文和数据导入 Claude。我们会提供一段提示词，你可以用它从其他账号获取记忆。"
+  ],
+  [
+    "Start import",
+    "开始导入"
+  ],
+  [
+    "Connectors have moved to",
+    "连接器已移至"
+  ],
+  [
+    "Head there to browse, connect, and manage them.",
+    "请前往那里浏览、连接和管理它们。"
+  ],
+  [
+    ". Head there to browse, connect, and manage them.",
+    "。请前往那里浏览、连接和管理它们。"
+  ],
+  [
+    "Add and manage MCP servers that you’re working on.",
+    "添加并管理你正在使用的 MCP 服务器。"
+  ],
+  [
+    "Add and manage MCP servers that you're working on.",
+    "添加并管理你正在使用的 MCP 服务器。"
+  ],
+  [
+    "Delete...",
+    "删除..."
+  ],
+  [
+    "Delete…",
+    "删除..."
+  ],
+  [
+    "Speed",
+    "速度"
   ]
 ]

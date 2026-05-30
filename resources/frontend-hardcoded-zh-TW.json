@@ -890,5 +890,137 @@
   [
     "defaultMessage:\"Relaunch now\"",
     "defaultMessage:\"立即重新啟動\""
+  ],
+  [
+    "Claude will keep these in mind across chats and Cowork within Anthropic's guidelines.",
+    "Claude 會在聊天和 Cowork 中記住這些內容，並遵循 Anthropic 的指南。"
+  ],
+  [
+    "Claude will keep these in mind across chats and Cowork within",
+    "Claude 會在聊天和 Cowork 中記住這些內容，並遵循"
+  ],
+  [
+    "Anthropic's guidelines",
+    "Anthropic 的指南"
+  ],
+  [
+    "e.g. when learning new concepts, I find analogies particularly helpful",
+    "例如學習新概念時，我覺得類比特別有幫助"
+  ],
+  [
+    "Learn how your information is protected when using Anthropic products, and visit our",
+    "了解你在使用 Anthropic 產品時資訊如何受到保護，並造訪我們的"
+  ],
+  [
+    "for more details.",
+    "了解更多詳情。"
+  ],
+  [
+    "Allow Claude to access common package managers to install packages and libraries for data analysis, visualizations, and file processing.",
+    "允許 Claude 存取常用套件管理器，以安裝用於資料分析、視覺化和檔案處理的套件和函式庫。"
+  ],
+  [
+    "View package manager domains.",
+    "查看套件管理器網域。"
+  ],
+  [
+    "View package manager domains",
+    "查看套件管理器網域"
+  ],
+  [
+    "Monitor chats closely as this comes with",
+    "請密切關注聊天，因為這會帶來"
+  ],
+  [
+    ". Monitor chats closely as this comes with",
+    "。請密切關注聊天，因為這會帶來"
+  ],
+  [
+    "security risks",
+    "安全風險"
+  ],
+  [
+    "Skills have moved to",
+    "技能已移至"
+  ],
+  [
+    "Back at it, claude",
+    "繼續開始吧，claude"
+  ],
+  [
+    "Delete sessions stored by Anthropic",
+    "刪除 Anthropic 儲存的工作階段"
+  ],
+  [
+    "Permanently delete Anthropic's server-side copies of your Claude Code sessions. Sessions stored locally on your computer aren't affected. Claude Code on the web sessions are managed separately — go to",
+    "永久刪除 Anthropic 伺服器端儲存的 Claude Code 工作階段副本。本機儲存的工作階段不受影響。網頁版 Claude Code 工作階段需另外管理，請前往"
+  ],
+  [
+    "Permanently delete Anthropic’s server-side copies of your Claude Code sessions. Sessions stored locally on your computer aren’t affected. Claude Code on the web sessions are managed separately — go to",
+    "永久刪除 Anthropic 伺服器端儲存的 Claude Code 工作階段副本。本機儲存的工作階段不受影響。網頁版 Claude Code 工作階段需另外管理，請前往"
+  ],
+  [
+    "Permanently delete Anthropic's server-side copies of your Claude Code sessions. Sessions stored locally on your computer aren't affected. Claude Code on the web sessions are managed separately — go to Claude Code.",
+    "永久刪除 Anthropic 伺服器端儲存的 Claude Code 工作階段副本。本機儲存的工作階段不受影響。網頁版 Claude Code 工作階段需另外管理，請前往 Claude Code。"
+  ],
+  [
+    "Permanently delete Anthropic’s server-side copies of your Claude Code sessions. Sessions stored locally on your computer aren’t affected. Claude Code on the web sessions are managed separately — go to Claude Code.",
+    "永久刪除 Anthropic 伺服器端儲存的 Claude Code 工作階段副本。本機儲存的工作階段不受影響。網頁版 Claude Code 工作階段需另外管理，請前往 Claude Code。"
+  ],
+  [
+    "Allow Claude to use coarse location metadata (city/region) to improve product experiences.",
+    "允許 Claude 使用粗略位置中繼資料（城市/地區）來改善產品體驗。"
+  ],
+  [
+    "Allow the use of your chats and coding sessions to train and improve Anthropic AI models.",
+    "允許使用你的聊天和程式碼工作階段來訓練和改善 Anthropic AI 模型。"
+  ],
+  [
+    "Allow Claude to remember relevant context from your chats. This setting controls memory for both chats and projects.",
+    "允許 Claude 記住你聊天中的相關脈絡。此設定會同時控制聊天和專案的記憶。"
+  ],
+  [
+    "Import memory from other AI providers",
+    "從其他 AI 提供者匯入記憶"
+  ],
+  [
+    "Bring relevant context and data from another AI provider to Claude. We'll provide a prompt you can use to fetch the memory from your other account.",
+    "將其他 AI 提供者中的相關脈絡和資料匯入 Claude。我們會提供一段提示，你可以用它從其他帳號擷取記憶。"
+  ],
+  [
+    "Start import",
+    "開始匯入"
+  ],
+  [
+    "Connectors have moved to",
+    "連接器已移至"
+  ],
+  [
+    "Head there to browse, connect, and manage them.",
+    "請前往該處瀏覽、連接和管理它們。"
+  ],
+  [
+    ". Head there to browse, connect, and manage them.",
+    "。請前往該處瀏覽、連接和管理它們。"
+  ],
+  [
+    "Add and manage MCP servers that you’re working on.",
+    "新增並管理你正在使用的 MCP 伺服器。"
+  ],
+  [
+    "Add and manage MCP servers that you're working on.",
+    "新增並管理你正在使用的 MCP 伺服器。"
+  ],
+  [
+    "Delete...",
+    "刪除..."
+  ],
+  [
+    "Delete…",
+    "刪除..."
+  ],
+  [
+    "Speed",
+    "速度"
   ]
 ]
